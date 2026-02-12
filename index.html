@@ -1,26 +1,70 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Tetris</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <div id="game-container">
-        <canvas id="tetris" width="300" height="600"></canvas>
-        <div id="ui">
-            <div id="hold">Hold</div>
-            <div id="next">Next</div>
-            <div id="score">0</div>
+      <div class="left">
+        <h1 class="logo">TETRIS</h1>
+
+        <div class="stage">
+          <canvas id="game" width="300" height="600"></canvas>
+          <div id="overlay" class="overlay hidden"></div>
         </div>
+
+        <footer class="footer">
+          Tetris © 1985~2026 Tetris Holding. Tetris logos, Tetris theme song and
+          Tetriminos are trademarks of Tetris Holding. The Tetris trade dress is
+          owned by Tetris Holding. Licensed to The Tetris Company. Tetris Game
+          Design by Alexey Pajitnov. Tetris Logo Design by Roger Dean. All Rights
+          Reserved.
+        </footer>
+      </div>
+
+      <div id="ui">
+        <div class="row">
+          <button id="start">Start</button>
+          <button id="pause">Pause</button>
+        </div>
+
+        <div id="status">Status: ready</div>
+
+        <div class="box">
+          <div class="title">Hold</div>
+          <div id="hold">-</div>
+        </div>
+
+        <div class="box">
+          <div class="title">Next (6)</div>
+          <ol id="next"></ol>
+        </div>
+
+        <div class="box">
+          <div class="title">Score</div>
+          <div id="score">0</div>
+        </div>
+
+        <div class="box help">
+          <div class="title">Help</div>
+          <div>← → ↓ (move), Space (hard drop)</div>
+          <div>Up / X (rotate CW), Z (rotate CCW)</div>
+          <div>Shift / C (hold), Esc / F1 (pause)</div>
+          <div>Terms: <b>Tetriminos</b> (I O T S Z J L)</div>
+        </div>
+      </div>
     </div>
 
-    <footer>
-        Tetris © 1985~2024 Tetris Holding. Tetris logos, Tetris theme song and Tetriminos are trademarks of Tetris Holding...
-    </footer>
-
+    <!-- Optional theme song file -->
     <audio id="themeSong" src="korobeiniki.mp3" loop></audio>
 
+    <script src="tetris_logic.js"></script>
+    <script src="renderer.js"></script>
+    <script src="audio.js"></script>
+    <script src="controller.js"></script>
     <script src="my_tetris.js"></script>
-</body>
+  </body>
 </html>

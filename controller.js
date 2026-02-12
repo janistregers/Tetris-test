@@ -1,34 +1,27 @@
 /* global window, document */
 (function () {
-    function attach(game) {
+    function attach(api) {
       document.addEventListener('keydown', (e) => {
-        if (!game) return;
+        if (!api) return;
   
-        // Pause
+        // Pause even if not interactive
         if (e.key === 'Escape' || e.key === 'F1') {
           e.preventDefault();
-          game.requestPauseToggle();
+          api.requestPauseToggle();
           return;
         }
   
-        if (!game.isInteractive()) return;
+        if (!api.isInteractive()) return;
   
-        if (e.key === 'ArrowLeft') {
-          game.move(-1, 0);
-        } else if (e.key === 'ArrowRight') {
-          game.move(1, 0);
-        } else if (e.key === 'ArrowDown') {
-          game.softDrop();
-        } else if (e.key === ' ') {
+        if (e.key === 'ArrowLeft') api.move(-1, 0);
+        else if (e.key === 'ArrowRight') api.move(1, 0);
+        else if (e.key === 'ArrowDown') api.softDrop();
+        else if (e.key === ' ') {
           e.preventDefault();
-          game.hardDrop();
-        } else if (e.key === 'ArrowUp' || e.key === 'x' || e.key === 'X') {
-          game.rotateCW();
-        } else if (e.key === 'z' || e.key === 'Z' || (e.ctrlKey && (e.key === 'z' || e.key === 'Z'))) {
-          game.rotateCCW();
-        } else if (e.key === 'Shift' || e.key === 'c' || e.key === 'C') {
-          game.hold();
-        }
+          api.hardDrop();
+        } else if (e.key === 'ArrowUp' || e.key === 'x' || e.key === 'X') api.rotateCW();
+        else if (e.key === 'z' || e.key === 'Z' || (e.ctrlKey && (e.key === 'z' || e.key === 'Z'))) api.rotateCCW();
+        else if (e.key === 'Shift' || e.key === 'c' || e.key === 'C') api.hold();
       });
     }
   

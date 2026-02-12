@@ -19,19 +19,21 @@
       o.connect(g);
       g.connect(c.destination);
       o.start();
-      setTimeout(() => {
-        o.stop();
-      }, durMs);
+      setTimeout(() => o.stop(), durMs);
     }
   
     const sounds = {
       move: () => beep(220, 30),
       rotate: () => beep(440, 40),
-      land: () => beep(160, 60),
       lock: () => beep(120, 80),
       clear: () => beep(600, 80),
       gameover: () => beep(80, 200),
     };
   
-    window.AudioFx = { sounds, setEnabled: (v) => { enabled = v; } };
+    window.AudioFx = {
+      sounds,
+      setEnabled: (v) => {
+        enabled = v;
+      },
+    };
   })();
