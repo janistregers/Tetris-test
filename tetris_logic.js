@@ -137,7 +137,7 @@
         }
       }
   
-      // start() {
+      start() {
         this.createBoard();
         this.refillBag();
         this.initNextQueue();
@@ -251,7 +251,7 @@
         return { cleared };
       }
   
-      clearLines() {
+      // clearLines() {
         let count = 0;
         this.board = this.board.filter((row) => {
           const full = row.every((c) => c !== null);
