@@ -1,15 +1,13 @@
 name: Node.js CI
 
-# Norādām, pie kuriem notikumiem palaist testus
 on:
   push:
-    branches: [ master, main ]
+    branches: [ dev, master, main ] # Pievienojām 'dev' sarakstā
   pull_request:
-    branches: [ master, main ]
+    branches: [ dev, master, main ]
 
 jobs:
   build:
-    # Izmantojam jaunāko Ubuntu serveri
     runs-on: ubuntu-latest
 
     steps:
@@ -19,10 +17,7 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '20' # Izvēlies savu Node versiju
-
-    - name: Install dependencies
-      run: npm install # Ja tev ir package.json, ja nav - šo var izlaist
+        node-version: '20'
 
     - name: Run Tetris Logic Tests
       run: node tetris_logic.test.js
