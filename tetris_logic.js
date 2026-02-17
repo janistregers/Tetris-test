@@ -137,7 +137,7 @@
         }
       }
   
-      start() {
+      // start() {
         this.createBoard();
         this.refillBag();
         this.initNextQueue();
